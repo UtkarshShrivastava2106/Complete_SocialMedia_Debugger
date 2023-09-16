@@ -46,8 +46,10 @@ const PostShare = () => {
       console.log(newPost);
       try {
         dispatch(uploadImage(data));
+        console.log("image Uploaded")
       } catch (err) {
-        console.log(err);
+
+        console.log(err, "image not uploaded ");
       }
     }
     dispatch(uploadPost(newPost));

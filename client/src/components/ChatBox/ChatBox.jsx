@@ -93,6 +93,7 @@ useEffect(()=> {
       <div className="ChatBox-container">
         {chat ? (
           <>
+          Chat Here
             {/* chat-header */}
             <div className="chat-header">
               <div className="follower">

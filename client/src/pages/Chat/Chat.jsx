@@ -13,7 +13,6 @@ const Chat = () => {
   const dispatch = useDispatch();
   const socket = useRef();
   const { user } = useSelector((state) => state.authReducer.authData);
-
   const [chats, setChats] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
@@ -25,12 +24,13 @@ const Chat = () => {
       try {
         const { data } = await userChats(user._id);
         setChats(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
     };
     getChats();
-  }, [user._id]);
+  }, [user]);
 
   // Connect to Socket.io
   useEffect(() => {
@@ -39,12 +39,13 @@ const Chat = () => {
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
     });
-  }, [user]);
+  }, [user._id]);
 
   // Send Message to socket server
   useEffect(() => {
-    if (sendMessage!==null) {
-      socket.current.emit("send-message", sendMessage);}
+    if (sendMessage !== null) {
+      socket.current.emit("send-message", sendMessage);
+    }
   }, [sendMessage]);
 
 
@@ -73,6 +74,7 @@ const Chat = () => {
         <div className="Chat-container">
           <h2>Chats</h2>
           <div className="Chat-list">
+            Conversation
             {chats.map((chat) => (
               <div
                 onClick={() => {

@@ -2,13 +2,17 @@
   display: flex;
   gap: 0.75rem;
 }
+.logoAuth {
+  width: 35px;
+  height: 40px;
+}
 .Search {
   display: flex;
   background-color: var(--inputColor);
   border-radius: 10px;
   padding: 5px;
 }
-.Search>input {
+.Search > input {
   background-color: transparent;
   border: none;
   outline: none;
